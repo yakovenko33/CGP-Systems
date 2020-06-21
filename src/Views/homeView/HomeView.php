@@ -1,5 +1,9 @@
 <?php require_once(ROOT . '/src/Views/Header.php');?>
 
+<style>
+    @import "/css/homeView/home.css";
+</style>
+
 <section class="home">
 
     <div id="filter" class="card mg-bot-50">
@@ -62,46 +66,6 @@
 
         <?php } ?>
     </div>
-
-<!--    <div id="1" class="card mg-bot-50">-->
-<!--        <div class="card-header">-->
-<!--            <h5 class="card-title">Название задачи</h5>-->
-<!--        </div>-->
-<!--        <div class="card-body">-->
-<!--            <p class="card-text">Имя: Surname Name</p>-->
-<!--            <p class="card-text">Email: test@email.com</p>-->
-<!--            <p class="card-text">Статус: отредактировано администратором.</p>-->
-<!--        </div>-->
-<!--        <div class="card-footer text-muted">-->
-<!--            20:06:2020-->
-<!--        </div>-->
-<!--    </div>-->
-<!---->
-<!--    <div id="2" class="card mg-bot-50">-->
-<!--        <div class="card-header">-->
-<!--            Featured-->
-<!--        </div>-->
-<!--        <div class="card-body">-->
-<!--            <h5 class="card-title">Special title treatment</h5>-->
-<!--            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>-->
-<!--        </div>-->
-<!--        <div class="card-footer text-muted">-->
-<!--            2 days ago-->
-<!--        </div>-->
-<!--    </div>-->
-<!---->
-<!--    <div id="3" class="card mg-bot-50">-->
-<!--        <div class="card-header">-->
-<!--            <h5 class="card-title">Название задачи</h5>-->
-<!--        </div>-->
-<!--        <div class="card-body">-->
-<!--            <h5 class="card-title">Special title treatment</h5>-->
-<!--            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>-->
-<!--        </div>-->
-<!--        <div class="card-footer text-muted">-->
-<!--            2 days ago-->
-<!--        </div>-->
-<!--    </div>-->
 </section>
 
 <div id="inline" style="display:none;">
@@ -138,7 +102,7 @@
     </form>
 </div>
 
-<script src="./js/HomeView/addTask.js"></script>
+<script src="/js/HomeView/addTask.js"></script>
 
 <?php require_once(ROOT . '/src/Views/Footer.php');?>
 

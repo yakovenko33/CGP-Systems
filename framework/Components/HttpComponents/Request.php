@@ -76,4 +76,12 @@ class Request
     {
         return $this->post;
     }
+
+    /**
+     * @return array
+     */
+    public function getGet(): array
+    {
+        return $this->get;
+    }
 }

@@ -10,20 +10,13 @@ use App\Services\AddTask\Validator;
 class AddTask extends ServiceRoot
 {
     /**
-     * @var array
-     */
-    private $data;
-
-    /**
      * AddTask constructor.
      * @param array $data
      */
     public function __construct(array $data = [])
     {
          //htmlspecialChar;
-        $this->data = $data;
-
-        parent::__construct(new Validator(), $this->data);
+        parent::__construct(new Validator(), $data);
     }
 
     protected function handle()
@@ -48,22 +41,5 @@ class AddTask extends ServiceRoot
             "status" => "success",
             "code" => 201
         ];
-    }
-
-    /**
-     * @return array
-     */
-    public function getResult(): array
-    {
-        return $this->result;
-    }
-
-    /**
-     * @param $data
-     */
-    private function debug($data): void
-    {
-        $file = "D:/ProgramFiles/OSPanel/domains/CGP-Systems/test.txt";
-        file_put_contents($file, print_r($data, true));
     }
 }

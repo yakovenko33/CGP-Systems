@@ -34,15 +34,16 @@ final class Router
     public function __construct()
     {
         $this->routes = require_once(ROOT . '/routes/routes.php');
-        $this->requestUri = $_SERVER['REQUEST_METHOD'] . trim($_SERVER["REQUEST_URI"]);
+        $this->requestUrl = $_SERVER['REQUEST_METHOD'] . trim($_SERVER["REQUEST_URI"]);
     }
 
     public function run(): void
     {
         $includeController = false;
         foreach($this->routes as $uriPattern => $path) {
-            if (preg_match("~$uriPattern~", $this->requestUri)) {
-                $fullPath = preg_replace("~$uriPattern~", $path, $this->requestUri);
+            $this->requestUrl = explode('?', $this->requestUrl)[0];
+            if (preg_match("~$uriPattern~", $this->requestUrl)) {
+                $fullPath = preg_replace("~$uriPattern~", $path, $this->requestUrl);
                 $segments = explode('@', $fullPath);
 
                 $this->controllerName = array_shift($segments);

@@ -3,8 +3,10 @@
 namespace App\Controllers;
 
 
+use App\Models\RoleModel;
 use App\Models\TaskModel;
 use App\Services\AddTask\AddTask;
+use TestFramework\Components\HttpComponents\AuthComponent;
 use TestFramework\Components\HttpComponents\Request;
 
 class HomeController
@@ -18,10 +20,19 @@ class HomeController
 
     public function test()
     {
-        $result = \password_hash("123", \PASSWORD_BCRYPT, ['cost' => 12]);
-        echo "<pre>";
-        var_dump($result);
+//        $result = \password_hash("123", \PASSWORD_BCRYPT, ['cost' => 12]);
+//        echo "<pre>";
+//        var_dump($result);
+//        die;
+
+//        $auth = (new AuthComponent())->getRoles();
+//        //session_start();
+//        echo "<pre>";
+//        var_dump($auth);
+//
+//        var_dump((new AuthComponent())->hasRoles(["admin"]));
         die;
+
     }
 
     /**

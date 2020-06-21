@@ -1,25 +1,21 @@
 
 $(document).ready(() => {
-    $("#add-task").modaal({
-        content_source: '#inline'
-    });
-
     $("#send-data").on("click", () => {
         $(".errors").remove();
 
-        let data = $('#sing-in').serialize();
+        let data = $('#sing-in-form').serialize();
+
         $.ajax({
             type: 'POST',
-            url: "/task",
+            url: "/admin/sing-in",
             data: data,
             success: (result) => {
                 let resultPars = JSON.parse(result);
                 validate(resultPars);
-                if(resultPars.status === "success") {
-                    $(".add-button").after(resultPars.data);
 
-                    document.getElementById('task-form').reset();
-                    $('#add-task').modaal('close');
+                if(resultPars.status === "success") {
+                    console.log(resultPars.data.url);
+                    window.location.href = resultPars.data.url;
                 }
             }
         });
@@ -33,17 +29,13 @@ $(document).ready(() => {
  */
 function validate(resultPars) {
     if (resultPars.status === 'error') {
-        if (resultPars.errors.hasOwnProperty("full_name")) {
-            $("#full-name-error").remove();
-            $("#full-name-field").after(getError(resultPars.errors.full_name[0], 'full-name-error'));
-        }
         if (resultPars.errors.hasOwnProperty("email")) {
             $("#email-error").remove();
             $("#email-field").after(getError(resultPars.errors.email[0], 'email-error'));
         }
-        if (resultPars.errors.hasOwnProperty("task")) {
-            $("#task-error").remove();
-            $("#task-field").after(getError(resultPars.errors.task[0], 'task-error'));
+        if (resultPars.errors.hasOwnProperty("password")) {
+            $("#password-error").remove();
+            $("#password-field").after(getError(resultPars.errors.password[0], 'password-error'));
         }
     }
 }

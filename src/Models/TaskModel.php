@@ -3,23 +3,10 @@
 namespace App\Models;
 
 
-use TestFramework\Components\Database\DB;
+use TestFramework\Components\Database\Model;
 
-class TaskModel
+class TaskModel extends Model
 {
-    /**
-     * @var \PDO
-     */
-    private $db;
-
-    /**
-     * TaskModal constructor.
-     */
-    public function __construct()
-    {
-        $this->db = DB::getInstance()->getConnecting();
-    }
-
     /**
      * @param array $data
      * @return int|null
@@ -69,7 +56,7 @@ class TaskModel
     public function getTaskAll(): array
     {
         try {
-            $stmt = $this->db->prepare("SELECT * FROM tasks");
+            $stmt = $this->db->prepare("SELECT * FROM tasks ORDER BY id DESC;");
 
             $stmt->execute();
             $result = $stmt->fetchAll();
@@ -80,9 +67,27 @@ class TaskModel
         return $result;
     }
 
-    private function debug($data): void
+    /**
+     * @param array $data
+     * @return array
+     */
+    public function adminEditTask(array $data): bool
     {
-        $file = "D:/ProgramFiles/OSPanel/domains/CGP-Systems/test.txt";
-        file_put_contents($file, print_r($data, true));
+        try {
+            $stmt = $this->db->prepare("UPDATE tasks
+                SET text = :task, status = :status
+                WHERE id = :id");
+
+            $stmt->bindParam(':task', $data["task"]);
+            $stmt->bindParam(':status', $data["status"]);
+            $stmt->bindParam(':id', $data["id"]);
+
+            $stmt->execute();
+            $result = true;
+        } catch (\PDOException $e) {
+            $result = false;
+        }
+
+        return $result;
     }
 }

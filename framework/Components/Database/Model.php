@@ -9,7 +9,7 @@ class Model
     /**
      * @var \PDO
      */
-    private $db;
+    protected $db;
 
     /**
      * Model constructor.

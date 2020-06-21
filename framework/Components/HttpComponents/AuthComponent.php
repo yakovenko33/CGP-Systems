@@ -8,17 +8,14 @@ session_start();
 class AuthComponent
 {
     /**
-     * @param string $plainPassword
-     * @param string $userData
+     * @param array $userData
+     * @param array $roles
      */
-    public function auth(string $plainPassword, string $userData) //hashedPassword
+    public function auth(array $userData, array $roles)
     {
-        //$_SESSION["is_auth"]
-        if (\password_verify($plainPassword, $userData["password"])) {
-            $_SESSION["is_auth"] = true;
-        } else {
-
-        }
+        $_SESSION["is_auth"] = true;
+        $_SESSION["user_data"] = $userData;
+        $_SESSION["user_roles"] = $roles;
     }
 
     /**
@@ -30,14 +27,35 @@ class AuthComponent
         session_destroy();
     }
 
+    /**
+     * @return array
+     */
     public function getRoles(): array
     {
-        return [];
+        return $_SESSION["user_roles"];
     }
 
+    /**
+     * @param array $roles
+     * @return bool
+     */
+    public function hasRoles(array $roles): bool
+    {
+        foreach($roles as $role) {
+            if (in_array($role, $_SESSION["user_roles"])) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * @return array
+     */
     public function getData(): array
     {
-        return [];
+        return $_SESSION["user_data"];
     }
 
     /**

@@ -13,12 +13,19 @@ abstract class ServiceRoot
     protected $result;
 
     /**
+     * @var array
+     */
+    protected $data;
+
+    /**
      * ServiceRoot constructor.
      * @param ValidatorRootInterface $validator
      * @param $data
      */
     public function __construct(ValidatorRootInterface $validator, $data)
     {
+        $this->data = $data;
+
         if(!$validator->validate($data)) {
             $this->result = [
                 "errors" => $validator->getErrors(),
@@ -28,6 +35,14 @@ abstract class ServiceRoot
         } else {
             $this->handle();
         }
+    }
+
+    /**
+     * @return array
+     */
+    public function getResult(): array
+    {
+        return $this->result;
     }
 
     abstract protected function handle();
