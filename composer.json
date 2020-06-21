@@ -1,0 +1,18 @@
+{
+  "description": "Test project CGP-Systems",
+  "license": "MIT",
+  "type": "project",
+  "autoload": {
+    "psr-4": {
+      "App\\": "src/",
+      "TestFramework\\": "framework/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+    }
+  },
+  "require": {
+    "vlucas/valitron": "^1.4"
+  }
+}

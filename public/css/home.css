@@ -1,0 +1,28 @@
+@charset "utf-8";
+
+.home {
+    margin-top: 50px;
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 600px;
+    /*background-color: #F8F8FF;*/
+}
+
+.mg-bot-50 {
+    margin-bottom: 50px;
+}
+
+.add-button {
+    text-align: center;
+}
+
+.header-form-add {
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.errors {
+    text-align: center;
+    color: #DC143C;
+}
+

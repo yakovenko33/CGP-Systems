@@ -1,0 +1,22 @@
+{
+  "name": "test-tr-logic",
+  "version": "1.0.0",
+  "description": "Test TR Logic",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yakovenko33/Test-TR-Logic.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yakovenko33/Test-TR-Logic/issues"
+  },
+  "homepage": "https://github.com/yakovenko33/Test-TR-Logic#readme"
+}
